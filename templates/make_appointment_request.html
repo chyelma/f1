@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<body>
+<br/>
+<div class="container">
+    <h3 class="text-center">Appointment Request Form</h3> <br/>
+    <form class="appointment" method="POST" action="">
+        {% csrf_token %}
+        <div class="container">
+          <div class="row">
+            <div class="col">
+            </div>
+            <div class="col">
+              <label>Counsellor Name: {{appointment.councellor_name}}</label><br/>
+              <label>Appointment Date : {{appointment.a_date}}</label><br/>
+              <label>Appointment Time : {{appointment.a_time}}</label><br/>
+              <label for="reason">Can you share briefly?</label>
+              <textarea class="form-control" id="reason" name="reason" ></textarea>
+              <label for="mobile">Mobile Number:</label>
+              <input type="tel" class="form-control" id="mobile" name="mobile" placeholder="Format: xxx-xxx-xxxx" required>
+              <label for="requester_email">Email Address</label>
+              <input type="text" class="form-control" id="requester_email" name="requester_email" >
+              
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+          </div>
+        </div>
+    </form>
+</div>
+  <br><br><br><br>
+</body>
+</html>

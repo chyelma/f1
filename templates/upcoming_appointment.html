@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+{% block main %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Upcoming Appointments</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+            font-weight: 700;
+        }
+        tr:nth-child(even) {
+            background-color: #fafafa;
+        }
+        .cancel-btn {
+            padding: 8px 16px;
+            background-color: #ff6666;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+        .cancel-btn:hover {
+            background-color: #ff4d4d;
+        }
+    </style>
+</head>
+<body>
+    <h1>Upcoming Appointments</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Counselor Name</th>
+                <th>Counselor Number</th>
+                <th>Reason for Appointment</th>
+                <th>Request Status</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in filtered_data %}
+                <tr>
+                    <td>{{ i.posted_by }}</td>
+                    <td>{{ i.mobile }}</td>
+                    <td>{{ i.reason }}</td>
+                    <td>
+                        {% if i.approved %}
+                            Approved
+                        {% else %}
+                            Not Approved
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if not i.approved %}
+                            <form method="POST" action="{% url 'cancel_appointment' pk=i.id %}">
+                                {% csrf_token %}
+                                <button type="submit" class="cancel-btn">Cancel</button>
+                            </form>
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
+{% endblock main %}

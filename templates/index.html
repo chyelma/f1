@@ -1,0 +1,346 @@
+{% comment %} <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Welcome Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f5f5f5;
+    }
+    .buttons-container {
+      text-align: center;
+    }
+    .button {
+      padding: 20px 50px;
+      font-size: 18px;
+      margin: 20px;
+      text-decoration: none;
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+    .about-us {
+      background-color: #3498db;
+    }
+    .signup {
+      background-color: #2ecc71;
+    }
+    .signin {
+      background-color: #e74c3c;
+    }
+    .button:hover {
+      opacity: 0.8;
+    }
+  </style>
+</head>
+<body>
+
+<div class="buttons-container">
+  <a class="button about-us" href="about.html">About Us</a>
+  <a class="button signup" href="{% url 'register' %}">Signup</a>
+  <a class="button signin" href="{% url 'login' %}">Signin</a>
+</div>
+
+</body>
+</html> {% endcomment %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counseling Unit</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS file for styling -->
+    <style>
+      /* General Styles */
+      body {
+          font-family: 'Arial', sans-serif;
+          margin: 0;
+          padding: 0;
+          line-height: 1.6;
+          background-color: #E6E6FA;
+      }
+
+      /* Header Styles */
+      header {
+          background-color: #fff;
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+          padding: 20px 0;
+      }
+
+      .logo img {
+          width: 150px;
+          height: auto;
+      }
+
+      nav ul {
+          list-style: none;
+          padding: 0;
+          margin: 0;
+          text-align: center;
+      }
+
+      nav ul li {
+          display: inline;
+          margin: 0 15px;
+      }
+
+      nav ul li a {
+          text-decoration: none;
+          color: #333;
+      }
+
+      nav ul li a:hover {
+          color: #ff6b6b;
+      }
+
+      /* Hero Section Styles */
+      .hero {
+          text-align: center;
+          padding: 100px 0;
+      }
+
+      .hero h1 {
+          font-size: 3em;
+          color: #333;
+          margin-bottom: 20px;
+      }
+
+      .hero p {
+          color: #777;
+          font-size: 1.2em;
+      }
+
+      /* Services Section Styles */
+      .services-list {
+          list-style: none;
+          padding: 0;
+          margin: 0;
+          text-align: center;
+      }
+
+      .services-list li {
+          display: inline-block;
+          margin: 0 20px;
+          font-size: 1.2em;
+          color: #333;
+      }
+
+      /* About Section Styles */
+      #about {
+          background-color: #fff;
+          padding: 80px 0;
+          text-align: center;
+      }
+
+      .team {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          margin-top: 40px;
+      }
+
+      .team-member {
+          margin: 0 20px;
+      }
+
+      .team-member img {
+          border-radius: 50%;
+          width: 120px;
+          height: 120px;
+          object-fit: cover;
+      }
+
+      .team-member h3 {
+          margin-top: 10px;
+          color: #333;
+      }
+
+      .team-member p {
+          color: #777;
+      }
+
+      /* Testimonials Section Styles */
+      .testimonial {
+          background-color: #f8f8f8;
+          padding: 40px;
+          margin: 20px 0;
+      }
+
+      .testimonial p {
+          font-style: italic;
+          color: #333;
+      }
+
+      .testimonial p:last-child {
+          margin-top: 10px;
+          color: #777;
+      }
+
+      /* Contact Section Styles */
+      #contact {
+          text-align: center;
+          padding: 80px 0;
+      }
+
+      form {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+      }
+
+      input,
+      textarea,
+      button {
+          width: 80%;
+          margin-bottom: 20px;
+          padding: 10px;
+          border: 1px solid #ccc;
+          border-radius: 5px;
+      }
+
+      button {
+          background-color: #ff6b6b;
+          color: #fff;
+          border: none;
+          cursor: pointer;
+          transition: background-color 0.3s ease;
+      }
+
+      button:hover {
+          background-color: #e9605c;
+      }
+
+      /* Footer Styles */
+      footer {
+          background-color: #333;
+          color: #fff;
+          text-align: center;
+          padding: 20px 0;
+      }
+
+      footer a {
+          color: #fff;
+          text-decoration: none;
+      }
+
+      footer a:hover {
+          color: #ff6b6b;
+      }
+
+      .footer-nav ul {
+          list-style: none;
+          padding: 0;
+          margin: 0;
+      }
+
+      .footer-nav ul li {
+          display: inline;
+          margin: 0 15px;
+      }
+
+      .social-links img {
+          width: 30px;
+          height: 30px;
+          margin: 0 10px;
+      }
+  </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="https://seeklogo.com/images/B/brac-university-logo-30065B3714-seeklogo.com.png" alt="Counseling Unit Logo">
+            </div>
+            <ul class="nav-links">
+                <li><a href="{% url 'index'%}">Home</a></li>
+                <li><a class="button about-us" href="about.html">About Us</a></li>
+                <li><a class="button about-us" href="{% url 'story_page' %}">Stories</a></li>
+                <li><a class="button signup" href="{% url 'register' %}">Sign up</a></li>
+                <li>  <a class="button signin" href="{% url 'login' %}">Sign in</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>Welcome to BRAC University Counseling Unit</h1>
+        <p>Where Healing Begins</p>
+        <img src="https://worldscholarshipforum.com/wp-content/uploads/2021/03/Cheapest-Masters-Degree-in-USA.jpg" alt="Counseling Image">
+    </section>
+
+    <section id="services">
+        <center><h2>Our Services</h2></center>
+        <ul class="services-list">
+            <li>Individual Therapy</li>
+            <li>Peer Counseling</li>
+            <li>Stress Management</li>
+            <!-- Add more services here -->
+        </ul>
+    </section>
+
+    {% comment %} <section id="about">
+        <h2>About Us</h2>
+        <p>Mission Statement: Describe your mission and values here.</p>
+        <!-- Team Introduction -->
+        <div class="team">
+            <div class="team-member">
+                <img src="counselor1.jpg" alt="Counselor 1">
+                <h3>Counselor Name</h3>
+                <p>Qualifications and Bio</p>
+            </div>
+            <!-- Add more team members here -->
+        </div>
+    </section>
+
+    <section id="testimonials">
+        <h2>Testimonials</h2>
+        <!-- Client Testimonials here -->
+        <div class="testimonial">
+            <p>"Testimonial text."</p>
+            <p>- Client Name</p>
+        </div>
+        <!-- Add more testimonials here -->
+    </section> {% endcomment %}
+    <section id="contact">
+        <h2>Contact Us</h2>
+        <p>Get in touch for a consultation or inquiries.</p>
+        <form action="contact_form.php" method="post">
+            <!-- Contact Form fields -->
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Your Email" required>
+            <textarea name="message" placeholder="Your Message" required></textarea>
+            <button type="submit">Submit</button>
+        </form>
+    </section>
+
+    <footer>
+        <nav class="footer-nav">
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#resources">Resources</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="social-links">
+            <!-- Social media links -->
+            <a href="https://facebook.com"><img src="facebook-icon.png" alt="Facebook"></a>
+            <a href="https://twitter.com"><img src="twitter-icon.png" alt="Twitter"></a>
+            <!-- Add more social media links -->
+        </div>
+        <p>&copy; 2023 Counseling Unit. All rights reserved.</p>
+    </footer>
+
+</body>
+
+</html>

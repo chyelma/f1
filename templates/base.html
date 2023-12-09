@@ -1,0 +1,341 @@
+{% comment %} <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Welcome Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f5f5f5;
+    }
+    .buttons-container {
+      text-align: center;
+    }
+    .button {
+      padding: 20px 50px;
+      font-size: 18px;
+      margin: 20px;
+      text-decoration: none;
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+    .about-us {
+      background-color: #3498db;
+    }
+    .signup {
+      background-color: #2ecc71;
+    }
+    .signin {
+      background-color: #e74c3c;
+    }
+    .button:hover {
+      opacity: 0.8;
+    }
+  </style>
+</head>
+<body>
+
+<div class="buttons-container">
+  <a class="button about-us" href="about.html">About Us</a>
+  <a class="button signup" href="{% url 'register' %}">Signup</a>
+  <a class="button signin" href="{% url 'login' %}">Signin</a>
+</div>
+
+</body>
+</html> {% endcomment %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counseling Unit</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS file for styling -->
+    <style>
+      /* General Styles */
+      body {
+          font-family: 'Arial', sans-serif;
+          margin: 0;
+          padding: 0;
+          line-height: 1.6;
+          background-color: #f8f8f8;
+      }
+
+      /* Header Styles */
+      header {
+          background-color: #fff;
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+          padding: 20px 0;
+      }
+
+      .logo img {
+          width: 150px;
+          height: auto;
+      }
+
+      nav ul {
+          list-style: none;
+          padding: 0;
+          margin: 0;
+          text-align: center;
+      }
+
+      nav ul li {
+          display: inline;
+          margin: 0 15px;
+      }
+
+      nav ul li a {
+          text-decoration: none;
+          color: #333;
+      }
+
+      nav ul li a:hover {
+          color: #ff6b6b;
+      }
+
+      /* Hero Section Styles */
+      .hero {
+          text-align: center;
+          padding: 100px 0;
+      }
+
+      .hero h1 {
+          font-size: 3em;
+          color: #333;
+          margin-bottom: 20px;
+      }
+
+      .hero p {
+          color: #777;
+          font-size: 1.2em;
+      }
+
+      /* Services Section Styles */
+      .services-list {
+          list-style: none;
+          padding: 0;
+          margin: 0;
+          text-align: center;
+      }
+
+      .services-list li {
+          display: inline-block;
+          margin: 0 20px;
+          font-size: 1.2em;
+          color: #333;
+      }
+
+      /* About Section Styles */
+      #about {
+          background-color: #fff;
+          padding: 80px 0;
+          text-align: center;
+      }
+
+      .team {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          margin-top: 40px;
+      }
+
+      .team-member {
+          margin: 0 20px;
+      }
+
+      .team-member img {
+          border-radius: 50%;
+          width: 120px;
+          height: 120px;
+          object-fit: cover;
+      }
+
+      .team-member h3 {
+          margin-top: 10px;
+          color: #333;
+      }
+
+      .team-member p {
+          color: #777;
+      }
+
+      /* Testimonials Section Styles */
+      .testimonial {
+          background-color: #f8f8f8;
+          padding: 40px;
+          margin: 20px 0;
+      }
+
+      .testimonial p {
+          font-style: italic;
+          color: #333;
+      }
+
+      .testimonial p:last-child {
+          margin-top: 10px;
+          color: #777;
+      }
+
+      /* Contact Section Styles */
+      #contact {
+          text-align: center;
+          padding: 80px 0;
+      }
+
+      form {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+      }
+
+      input,
+      textarea,
+      button {
+          width: 80%;
+          margin-bottom: 20px;
+          padding: 10px;
+          border: 1px solid #ccc;
+          border-radius: 5px;
+      }
+
+      button {
+          background-color: #ff6b6b;
+          color: #fff;
+          border: none;
+          cursor: pointer;
+          transition: background-color 0.3s ease;
+      }
+
+      button:hover {
+          background-color: #e9605c;
+      }
+
+      /* Footer Styles */
+      footer {
+          background-color: #333;
+          color: #fff;
+          text-align: center;
+          padding: 20px 0;
+      }
+
+      footer a {
+          color: #fff;
+          text-decoration: none;
+      }
+
+      footer a:hover {
+          color: #ff6b6b;
+      }
+
+      .footer-nav ul {
+          list-style: none;
+          padding: 0;
+          margin: 0;
+      }
+
+      .footer-nav ul li {
+          display: inline;
+          margin: 0 15px;
+      }
+
+      .social-links img {
+          width: 30px;
+          height: 30px;
+          margin: 0 10px;
+      }
+      /* Reset default margin and padding for all elements */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    /* Set minimum height to fill the viewport */
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    position: relative; /* Set body as relative to position footer */
+}
+
+footer {
+    width: 100%;
+    background-color:black;
+    position: fixed; /* Fixed positioning */
+    bottom: 0; /* Stick to the bottom of the viewport */
+    left: 0;
+    padding: 20px 0; /* Adjust as needed */
+    text-align: center;
+}
+
+  </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="https://seeklogo.com/images/B/brac-university-logo-30065B3714-seeklogo.com.png" alt="Counseling Unit Logo">
+            </div>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a class="button about-us" href="#">About Us</a></li>
+                {% if user.is_authenticated %}
+                    <!-- If user is authenticated, show the logout button -->
+                    <li><a class="button logout" href="{% url 'logout' %}">Logout</a></li>
+                           <!-- Show specific dashboard links based on user type -->
+                     {% if user.is_superuser %}
+                        <li><a class="button superuser-dashboard" href="{% url 'admin_dashboard' %}">Superuser Dashboard</a></li>
+                    {% comment %} {% elif user.user_type == 'counsellor' %}
+                        <li><a class="button counsellor-dashboard" href="{% url 'counsellor_dashboard' %}">Counsellor Dashboard</a></li>
+                    {% elif user.user_type == 'customuser' %}
+                        <li><a class="button customuser-dashboard" href="{% url 'patient_dashboard' %}">Custom User Dashboard</a></li>
+                    {% endif %} {% endcomment %}
+                    {% endif %}
+                {% else %}
+                    <!-- If user is not authenticated, show the signup and signin buttons -->
+                    <li><a class="button signup" href="{% url 'register' %}">Signup</a></li>
+                    <li><a class="button signin" href="{% url 'login' %}">Signin</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
+</body>
+
+
+{% block main %}
+{% endblock %}
+
+
+
+<footer>
+    <nav class="footer-nav">
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#resources">Resources</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+    <div class="social-links">
+        <!-- Social media links -->
+        <a href="https://facebook.com"><img src="path_to_facebook_icon.svg" alt="Facebook"></a>
+        <a href="https://twitter.com"><img src="path_to_twitter_icon.svg" alt="Twitter"></a>
+        <!-- Add more social media links -->
+    </div>
+    <p>&copy; 2023 Counseling Unit. All rights reserved.</p>
+</footer>
+
+</body>
+
+</html>

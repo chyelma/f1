@@ -1,0 +1,110 @@
+{% extends "base.html" %}
+{% block main %}
+<html>
+
+<head>
+    <title>Available Appointment Slots</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css">
+    <style>
+        /* Additional custom styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f8f8;
+            margin: 0;
+            padding: 0;
+        }
+
+        .table-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        table {
+            width: 80%;
+            border-collapse: collapse;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+        }
+
+        th,
+        td {
+            padding: 12px;
+            text-align: center;
+        }
+
+        th {
+            background-color: black;
+            color: black;
+        }
+
+        tbody tr:hover {
+            background-color: #f2f2f2;
+        }
+
+        .btn {
+            padding: 8px 16px;
+        }
+
+        .no-slots {
+            text-align: center;
+            font-style: italic;
+            color: #888;
+        }
+        /* Additional custom styles */
+        .tite {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f8f8;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        h1 {
+            margin-top: 50px; /* Adjust as needed for vertical positioning */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="table-container">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Counselor Name</th>
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if appointments %}
+                    {% for a in appointments %}
+                    <tr>
+                        <td>{{ a.councellor_name }}</td>
+                        <td>{{ a.a_date }}</td>
+                        <td>{{ a.a_time }}</td>
+                        <td><a href="{% url 'request_appointment' pk=a.pk %}" class="btn btn-primary">Make a Request</a></td>
+                    </tr>
+                    {% endfor %}
+                {% else %}
+                    <tr>
+                        <td colspan="4" class="no-slots">No Available Slots.</td>
+                    </tr>
+                {% endif %}
+            </tbody>
+        </table>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Your additional script files -->
+</body>
+
+</html>
+{% endblock main %}
